@@ -1,0 +1,30 @@
+Zadanie 1 - Nadpisanie tekstu do pliku bez uzycia edytora:
+echo "txt" > plik.txt
+
+Dodanie tekstu na koniec pliku bez uzycia edytora:
+echo "txt >> plik.txt
+
+Zadanie 2 - Skrót komentowania/odkomentowania linii w nano:
+
+klawisz alt + 3 
+
+Zadanie 3 - Skróty dodajace i odejmujace wciece w nano:
+alt + } zwiększajacy wcięcie
+alt + { zmniejszajacy wcięcie
+
+Zadanie 4 - Podaj nazwę pliku konfiguracyjnego nano i treść, która umożliwi, aby tabulatory były automatycznie zamieniane na spacje (za każdym uruchomieniem):
+Plik konfiguracyjny nano - ~./nanorc
+
+Druga część zadania -
+set tabstospaces
+set tabsize 4 
+
+Zadanie 5 - Podaj nazwę pliku konfiguracyjnego vim i treść, która umożliwi, aby tabulatory były automatycznie zamieniane na spacje (za każdym uruchomieniem).
+Plik konfiguracyjny vim - ~/.vimrc
+
+Druga częśc zadania:
+ 
+set expandtab - Zamienia tab na spacje 
+set tabstop=4 - Szerokość tabulatora 
+set shiftwidth=4 - Liczba spacja dla wcięia
+set softtabstop=4 - Liczba spacji po nacisnieciu klawisza tab
