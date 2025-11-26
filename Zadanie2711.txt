@@ -1,0 +1,34 @@
+1. Wypisz nagłówek (pierwszą linię) z iris.csv.
+    head iris.csv -n 1
+
+2. Wypisz wszystkie linie oprócz pierwszej z iris.csv (podpowiedź: skorzystaj z man tail).
+tail iris.csv -n +2
+
+3. Zamień gatunki na liczby (wyświetl poprawione linie, nie zmieniaj treści pliku):
+“Setosa” na 1,
+“Versicolor” na 2,
+“Virginica” na 3.
+sed -e 's/"Setosa"/1/g' -e 's/"Versicolor"/2/g' -e 's/"Virginica"/3/g' iris.csv
+
+4. Wypisz dostępne rodzaje irysów bez powtórzeń i bez cudzysłowów.
+tail -n +2 iris.csv | cut -d',' -f5 | sort | uniq | tr -d '"'
+
+5. Oblicz sumę wartości dla każdego wiersza.
+tail -n +2 iris.csv | awk -F',' '{print $1+$2+$3+$4}'
+
+6. Oblicz średnią wartość drugiej kolumny (sepal.width).
+awk -F',' '{sum+=$2; count++} END {print sum/count}' iris.csv
+
+7. Wypisz całą linię, która ma maksymalną wartość czwartej kolumny (petal.width).
+awk -F',' 'BEGIN {max=-1} {if ($4 > max) {max=$4; line=$0}} END {print line}' iris.csv
+
+8. Wypisz nazwę gatunku Irysa, którego pierwsza kolumna (sepal.length) jest większa niż 7.
+awk -F',' '$1 > 7 {print $5}' iris.csv     <- można dorzucić |uniq na koniec
+
+9. Przeformatuj plik CSV korzystając z printf w awk na pola oddzielone tabulatorami obcinając liczby do całkowitych.
+5       4       1       0       "Setosa"
+(head -n 1 iris.csv && tail -n +2 iris.csv | awk -F',' 'BEGIN {OFS="\t"} {printf "%d\t%d\t%d\t%d\t%s\n", $1, $2, $3, $4, $5}') > iris_formatted.csv
+
+10. Zmień losowo kolejność wierszy z danymi o irysach i zapisz je w nowym pliku CSV z nagłówkiem.
+(head -n 1 iris.csv && tail -n +2 iris.csv | shuf) > iris_shuffled.csv
+
