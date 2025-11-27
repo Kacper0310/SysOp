@@ -1,5 +1,7 @@
+Zadania 27.11 Systemy Operacyjne
+
 1. Wypisz nagłówek (pierwszą linię) z iris.csv.
-    head iris.csv -n 1
+head iris.csv -n 1
 
 2. Wypisz wszystkie linie oprócz pierwszej z iris.csv (podpowiedź: skorzystaj z man tail).
 tail iris.csv -n +2
@@ -23,7 +25,7 @@ awk -F',' '{sum+=$2; count++} END {print sum/count}' iris.csv
 awk -F',' 'BEGIN {max=-1} {if ($4 > max) {max=$4; line=$0}} END {print line}' iris.csv
 
 8. Wypisz nazwę gatunku Irysa, którego pierwsza kolumna (sepal.length) jest większa niż 7.
-awk -F',' '$1 > 7 {print $5}' iris.csv     <- można dorzucić |uniq na koniec
+awk -F',' '$1 > 7 {print $5}' iris.csv   
 
 9. Przeformatuj plik CSV korzystając z printf w awk na pola oddzielone tabulatorami obcinając liczby do całkowitych.
 5       4       1       0       "Setosa"
